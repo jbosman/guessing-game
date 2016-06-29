@@ -1,0 +1,77 @@
+
+body {
+	background: white;
+	color: blue;
+	width: 1024px;
+	margin: 0px auto;
+	
+}
+
+/****************************************************************/
+/********************** NAVIGATION SECTION **********************/
+/****************************************************************/
+
+.nav {
+	border-bottom: 5px solid black;
+}
+
+.nav h1 {
+	text-align: center;
+	font-size: 36px;
+	color: blue;
+	font-weight: bold;
+}
+
+/****************************************************************/
+/********************** MAIN PAGE SECTION ***********************/
+/****************************************************************/
+
+.mainPage {
+	height: 525px;
+	background: grey url("images/countDraculaBackground.png") top left no-repeat;
+	margin: 5px auto;
+
+}
+
+.mainPage h1 {
+	position: relative;
+	top: 110px;
+	left: 555px;
+	/*right: 270px;*/
+	font-size: 28px;
+}
+
+.mainPage h2 {
+	position: relative;
+	top: 90px;
+	left: 620px;
+	font-size: 20px;
+}
+
+.mainPage form {
+	position: relative;
+	top: 100px;
+	left: 300px;
+}
+
+.mainPage label, input {
+	display: block;
+	font-size: 28px;
+}
+
+.mainPage label {
+	padding-left: 10px;
+	color: red;
+	font-weight: bold;
+}
+
+.mainPage input {
+	width: 100px;
+	text-align: center;
+}
+
+.mainPage input[type=submit]{
+	height: 100px;
+}
+
+
