@@ -27,14 +27,10 @@ gameStateFactory.prototype.lowerOrHigher = function() {
 
 gameStateFactory.prototype.checkGuess = function(num) {
 	
-	if( num > 100 )
-		this.lastPlayerGuess = 100;
-	else if( num < 0 )
-		this.lastPlayerGuess = 0;
-	else{
-		this.playerGuess = num;
-		this.numOfGuesses--;
-	}
+	// Then update the players guess
+	this.playerGuess = num;
+	// And decrement the number of guesses
+	this.numOfGuesses--;
 
 }
 
