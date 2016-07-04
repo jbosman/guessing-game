@@ -3,6 +3,9 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="guessing-game.css">
+		<script type="text/javascript" src="JQuery/jquery.min.js"></script> 
+		<script src="gameStateFactory.js"></script>
+		<script src="guessing-game.js"> </script>
 	</head>
 	<body>
 
@@ -13,17 +16,19 @@
 		</div>
 
 		<div class = mainPage>
-
-			<h1> Try to guess my number!!! </h1>
-			<h2> It's between 1 and 100... </h2>
-
-			<form>
+		<section class="CountSpeak">
+			<h1>Try to guess my number!!!</h1>
+			<h1>It's between 1 and 100...</h1>
+			<h1>Enter a number and press submit!</h1>
+		</section>
+		<section class="Buttons">
+			<form class="form">
+				<input class="Restart-Button" type="submit" value="Restart">
 				<label>Guess:</label>
-				<input type="text">
-				<input type="submit" value="Submit Guess">
-				<input type="submit" value="Restart">
+				<input id="playerGuess" type="number">
+				<input class="submit-guess" type="submit" value="Submit">
 			</form>
-
+		</section>
 		</div>
 	</body>
 
