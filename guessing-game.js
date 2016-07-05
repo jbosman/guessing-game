@@ -4,8 +4,9 @@ $(document).ready( function() {
 
 	var gameState = new gameStateFactory();
 
-	gameState.printGameState();
-
+	/* debug messages to the console */
+	gameState.printGameState(); 
+	/* Update the display - right now just the num of guesses */
 	gameState.updateDisplay();
 
 
@@ -17,20 +18,7 @@ $(document).ready( function() {
 		event.preventDefault();
 		//console.log("Submit Guess Button Pressed");
 
-		// First check if there are guesses left
-		// if not make the button useless
-		if( gameState.stillPlaying() ) {
-			var playerGuessDOM = $("#playerGuess");
-
-			// Submit the players next guess
-			gameState.checkGuess(playerGuessDOM.val());
-			// Clear the current guess from the text field
-			playerGuessDOM.val("");
-
-			gameState.updateDisplay();
-			// Printing the game state for debugging
-			gameState.printGameState();
-		}
+		submitGuess(gameState);
 	})
 
 	// ************ RESTART BUTTON CLICK ************ //
@@ -45,5 +33,29 @@ $(document).ready( function() {
 		gameState.updateDisplay();
 		gameState.printGameState();
 
+	})
+
+	// ************ HINT BUTTON CLICK ************ //
+
+	$("form").find(".hint-button").on("click", function() {
+		event.preventDefault();
+
+		console.log("Hint Button Pressed");
+	})
+
+	// ************ ENTER KEY PRESS ON PLAYER GUESS FIELD ************ //
+	// For whatever reason this was restarting the game.
+	// This disables event in the field, but still gets caught
+	// by the enter key press event handler below on the document.
+	$("form").find("#playerGuess").on("keydown", function() {
+		if( event.which == 13 )
+			event.preventDefault();
+	})
+
+	// ************ ENTER KEY PRESS ************ //
+	// Grabs
+	$(document).on("keydown", function(event) {
+		if( event.which == 13 )
+			submitGuess(gameState);
 	})
 });

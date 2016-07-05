@@ -25,17 +25,17 @@ gameStateFactory.prototype.stillPlaying = function() {
 gameStateFactory.prototype.lowerOrHigher = function() {
 	
 	if( this.getPlayerGuess() == this.getWinningNum() ){
-		winnerCountSpeak();
+		countSpeak("winner");
 		this.inPlay = false;
 	}
 	else if( this.getNumOfGuesses() === 0 ){
-		loserCountSpeak();
+		countSpeak("loser");
 		this.inPlay = false;
 	}
 	else if( this.getPlayerGuess() < this.getWinningNum() )
-		toLowCountSpeak();
+		countSpeak("toLow");
 	else if( this.getPlayerGuess() > this.getWinningNum() ) 
-		toHighCountSpeak();
+		countSpeak("toHigh");
 	else{
 		debugger;
 		alert("Unknown State");
@@ -62,12 +62,12 @@ gameStateFactory.prototype.checkGuess = function(num) {
 		this.lowerOrHigher();
 	}
 	else
-		dupGuessCountSpeak();	
+		countSpeak("dupNum");	
 
 }
 
 gameStateFactory.prototype.playAgain = function() {
-	initCountSpeak();
+	countSpeak("init");
 	this.numOfGuesses = 10;
 	this.playerGuess = -1;
 	this.pastPlayerGuesses = [];

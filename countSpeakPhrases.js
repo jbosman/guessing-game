@@ -1,50 +1,27 @@
-function initCountSpeak() {
-	var countSpeakDOM = $(".CountSpeak");
-	countSpeakDOM.children().show();
-	countSpeakDOM.children().first().text("Try to guess my number!!!");
-	countSpeakDOM.children().first().next().text("It's between 1 and 100...");
-	countSpeakDOM.children().last().text("Enter a number and press submit!");
+
+// countSay Object
+// Object used to hold phrases for the count to say
+var countSay = {
+	init: 	["Try to guess my number!!!", "It's between 1 and 100...", "Enter a number and press submit!" ],
+	winner: ["Contgrats!!!", "You guessed my number!!!", " " ],
+	loser: 	["Sorry....", "You ran out of guesses.", "Want to play again?" ],
+	toHigh: [" ", "Your guess was too high.", "Try again?"],
+	toLow:  [" ", "Your guess was too low.", "Try again?"],
+	dupNum: [" ", "You already guessed that silly!", " " ]
 }
 
-function winnerCountSpeak() {
+// countSpeak
+// Takes in a string that should be an object in object countSay.
+// Writes the desired phrase to the count's talking bubble.
+function countSpeak(phrase) {
 	var countSpeakDOM = $(".CountSpeak");
-	countSpeakDOM.children().first().text("Contgrats!!!");
-	countSpeakDOM.children().first().next().text("You guessed my number!!!");
-	countSpeakDOM.children().last().hide();
+	var countToSay = countSay[phrase];
+
+	countSpeakDOM.children().first().text(countToSay[0]);
+	countSpeakDOM.children().first().next().text(countToSay[1]);
+	countSpeakDOM.children().last().text(countToSay[2]);
 }
 
-function loserCountSpeak() {
-	var countSpeakDOM = $(".CountSpeak");
-	countSpeakDOM.children().show();
-	countSpeakDOM.children().first().text("Sorry....");
-	countSpeakDOM.children().first().next().text("You ran out of guesses.");
-	countSpeakDOM.children().last().text("Want to play again?");
-}
 
-function toHighCountSpeak() {
-	var countSpeakDOM = $(".CountSpeak");
-	countSpeakDOM.children().show();
-	countSpeakDOM.children().first().hide();
-	countSpeakDOM.children().first().next().text("Your guess was too high.");
-	countSpeakDOM.children().last().text("Try again?");
-}
 
-function toLowCountSpeak() {
-	var countSpeakDOM = $(".CountSpeak");
-	countSpeakDOM.children().show();
-	countSpeakDOM.children().first().hide();
-	countSpeakDOM.children().first().next().text("Your guess was too low.");
-	countSpeakDOM.children().last().text("Try again?");
-}
 
-function dupGuessCountSpeak() {
-	var countSpeakDOM = $(".CountSpeak");
-	countSpeakDOM.children().show();
-	countSpeakDOM.children().first().hide();
-	countSpeakDOM.children().first().next().text("You already guessed that silly!");
-	countSpeakDOM.children().last().hide();
-}
-
-function updateGuessesLeft(num) {
-	$(".guessesLeft").text( "Guesses Left: " + num );
-}

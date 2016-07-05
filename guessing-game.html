@@ -4,16 +4,15 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="guessing-game.css">
 		<script type="text/javascript" src="JQuery/jquery.min.js"></script> 
-		<script> src="countSpeakPhrases.js"</script>
+		<script src="countSpeakPhrases.js"></script>
+		<script src="utilityFunctions.js"></script>
 		<script src="gameStateFactory.js"></script>
 		<script src="guessing-game.js"> </script>
 	</head>
 	<body>
 
 		<div class = nav>
-
 			<h1> Guessing Game </h1>
-
 		</div>
 
 		<div class = mainPage>
@@ -28,9 +27,9 @@
 				<label class="guessesLeft">Guesses Left:</label>
 				<input id="playerGuess" type="number">
 				<input class="submit-guess" type="submit" value="Submit">
-			</form>
+				<input class="hint-button" type="submit" value="Hint">
 		</section>
 		</div>
-	</body>
 
+	</body>
 </html>
