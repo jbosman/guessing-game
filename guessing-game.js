@@ -6,25 +6,28 @@ $(document).ready( function() {
 
 	gameState.printGameState();
 
+	gameState.updateDisplay();
+
+
 	// ************ SUBMIT GUESS BUTTON CLICK ************ //
 
 	$("form").find(".submit-guess").on("click", function() {	
 		// Prevent default button click actions
 		// Mainly this stops the page from refreshing
 		event.preventDefault();
+		//console.log("Submit Guess Button Pressed");
 
 		// First check if there are guesses left
 		// if not make the button useless
-		if( gameState.getNumOfGuesses() > 0 ) {
+		if( gameState.stillPlaying() ) {
 			var playerGuessDOM = $("#playerGuess");
-
-			//console.log("Submit Guess Button Pressed");
 
 			// Submit the players next guess
 			gameState.checkGuess(playerGuessDOM.val());
 			// Clear the current guess from the text field
 			playerGuessDOM.val("");
 
+			gameState.updateDisplay();
 			// Printing the game state for debugging
 			gameState.printGameState();
 		}
@@ -39,6 +42,7 @@ $(document).ready( function() {
 
 		gameState.playAgain();
 
+		gameState.updateDisplay();
 		gameState.printGameState();
 
 	})

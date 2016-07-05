@@ -45,30 +45,34 @@ body {
 	margin-bottom: 5px;
 }
 
-.mainPage form {
+.Buttons {
 	position: relative;
 	top: 100px;
 	left: 400px;
 }
 
-.mainPage label, input {
+.form {
+	width: 200px;
+}
+
+.form label, input {
 	display: block;
-	font-size: 28px;
-}
-
-.mainPage label {
-	padding-left: 10px;
-	color: red;
-	font-weight: bold;
-}
-
-.mainPage input {
-	width: 120px;
+	width: 180px;
 	text-align: center;
 }
 
-.mainPage input[type=submit]{
-	height: 100px;
+.form label {
+	color: red;
+	font-weight: bold;
+	
+	font-size: 25px;
 }
+
+.mainPage input {
+	margin-left: auto;
+	margin-right: auto;
+	height: 30px;
+}
+
 
 

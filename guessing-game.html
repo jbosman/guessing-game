@@ -4,6 +4,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="guessing-game.css">
 		<script type="text/javascript" src="JQuery/jquery.min.js"></script> 
+		<script> src="countSpeakPhrases.js"</script>
 		<script src="gameStateFactory.js"></script>
 		<script src="guessing-game.js"> </script>
 	</head>
@@ -24,7 +25,7 @@
 		<section class="Buttons">
 			<form class="form">
 				<input class="Restart-Button" type="submit" value="Restart">
-				<label>Guess:</label>
+				<label class="guessesLeft">Guesses Left:</label>
 				<input id="playerGuess" type="number">
 				<input class="submit-guess" type="submit" value="Submit">
 			</form>
