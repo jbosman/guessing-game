@@ -5,8 +5,10 @@ var countSay = {
 	init: 	["Try to guess my number!!!", "It's between 1 and 100...", "Enter a number and press submit!" ],
 	winner: ["Contgrats!!!", "You guessed my number!!!", " " ],
 	loser: 	["Sorry....", "You ran out of guesses.", "Want to play again?" ],
-	toHigh: [" ", "Your guess was too high.", "Try again?"],
-	toLow:  [" ", "Your guess was too low.", "Try again?"],
+	toHighHot: ["Your guess was too high.", "But you're hot!", "Try again?"],
+	toLowHot:  ["Your guess was too low.", "But you're hot!", "Try again?"],
+	toHighCold: ["Your guess was too high.", "You're freezing!", "Try again?"],
+	toLowCold:  ["Your guess was too low.", "You're freezing!", "Try again?"],
 	dupNum: [" ", "You already guessed that silly!", " " ]
 }
 

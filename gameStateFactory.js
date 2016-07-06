@@ -24,7 +24,10 @@ gameStateFactory.prototype.stillPlaying = function() {
 
 gameStateFactory.prototype.lowerOrHigher = function() {
 	
-	if( this.getPlayerGuess() == this.getWinningNum() ){
+	var playersGuess = this.getPlayerGuess();
+	var winningNumber = this.getWinningNum();
+
+	if( playersGuess == winningNumber ){
 		countSpeak("winner");
 		this.inPlay = false;
 	}
@@ -32,14 +35,20 @@ gameStateFactory.prototype.lowerOrHigher = function() {
 		countSpeak("loser");
 		this.inPlay = false;
 	}
-	else if( this.getPlayerGuess() < this.getWinningNum() )
-		countSpeak("toLow");
-	else if( this.getPlayerGuess() > this.getWinningNum() ) 
-		countSpeak("toHigh");
-	else{
-		debugger;
-		alert("Unknown State");
+	else if( playersGuess < winningNumber ) { 
+		if( Math.abs(playersGuess - winningNumber) > 10)
+			countSpeak("toLowCold");
+		else
+			countSpeak("toLowHot");
 	}
+	else if( playersGuess > winningNumber ) {
+		if( Math.abs(playersGuess - winningNumber) > 10)
+			countSpeak("toHighCold");
+		else
+			countSpeak("toHighHot");
+	}
+	else
+		alert("Unknown State. Call 911!!");
 
 }
 
