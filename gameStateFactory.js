@@ -2,6 +2,18 @@ var gameStateFactory = function() {
 		this.playAgain();
 }
 
+gameStateFactory.prototype.playAgain = function() {
+	countSpeak("init");
+	this.MAX_NUM = 100;
+	this.numOfGuesses = 10;
+	this.playerGuess = -1;
+	this.pastPlayerGuesses = [];
+	this.winningNum = this.generateNumber(this.MAX_NUM);
+	this.hints = [];
+	this.fillHintsArray();
+	this.inPlay = true;
+}
+
 gameStateFactory.prototype.getNumOfGuesses = function() {
 	return this.numOfGuesses;
 }
@@ -14,8 +26,8 @@ gameStateFactory.prototype.getWinningNum = function() {
 	return this.winningNum;
 }
 
-gameStateFactory.prototype.generateWinningNumber = function() {
-	return Math.floor(Math.random() * 100) + 1;
+gameStateFactory.prototype.generateNumber = function(maxNum) {
+	return Math.floor(Math.random() * maxNum) + 1;
 }
 
 gameStateFactory.prototype.stillPlaying = function() {
@@ -68,20 +80,13 @@ gameStateFactory.prototype.checkGuess = function(num) {
 	if( !match ){
 		this.numOfGuesses--;
 		this.pastPlayerGuesses.push(num);
+		this.fillHintsArray();
 		this.lowerOrHigher();
+		console.log(this.hints);
 	}
 	else
 		countSpeak("dupNum");	
 
-}
-
-gameStateFactory.prototype.playAgain = function() {
-	countSpeak("init");
-	this.numOfGuesses = 10;
-	this.playerGuess = -1;
-	this.pastPlayerGuesses = [];
-	this.winningNum = this.generateWinningNumber();
-	this.inPlay = true;
 }
 
 gameStateFactory.prototype.printGameState = function() {
@@ -92,4 +97,36 @@ gameStateFactory.prototype.printGameState = function() {
 
 gameStateFactory.prototype.updateDisplay = function () {
 	updateGuessesLeft(this.getNumOfGuesses());
+}
+
+gameStateFactory.prototype.generateHintNumber = function () {
+	var invalidNum = false;
+	var tempHintNum = -1;
+		
+	// Check that none of the hint numbers have already been guessed
+	do{
+		tempHintNum = this.generateNumber(this.MAX_NUM);
+		
+		for( var j = 0; j < this.pastPlayerGuesses.length && !invalidNum; j++) {
+			if( tempHintNum == this.pastPlayerGuesses[j] )
+				invalidNum = true;
+		}
+	}while(invalidNum);
+
+	return tempHintNum;
+}
+
+gameStateFactory.prototype.fillHintsArray = function () {
+
+	this.hints = [];
+
+	// Add however many guesses we have left to hint numbers array
+	for( var i = 0; i < this.getNumOfGuesses(); i++) {
+		this.hints[i] = this.generateHintNumber();
+	}
+
+	// When the hintNumbers array has been generated add the winning number in randomly
+	var randomArrayLocation = this.generateNumber(this.getNumOfGuesses());
+	this.hints[randomArrayLocation] = this.getWinningNum();
+
 }

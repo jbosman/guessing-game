@@ -35,12 +35,18 @@ $(document).ready( function() {
 
 	})
 
-	// ************ HINT BUTTON CLICK ************ //
+	// ************ HINT BUTTON MOUSE ENTER ************ //
 
-	$("form").find(".hint-button").on("click", function() {
-		event.preventDefault();
+	$("form").find(".hint-button").on("mouseenter", function() {
+		$(".hint").text("It's one of these numbers:\n" + gameState.hints);
+		$(".hint").show();
+	})
 
-		console.log("Hint Button Pressed");
+	// ************ HINT BUTTON MOUSE EXIT ************ //
+
+	$("form").find(".hint-button").on("mouseout", function() {
+
+		$(".hint").hide();
 	})
 
 	// ************ ENTER KEY PRESS ON PLAYER GUESS FIELD ************ //
